@@ -1,0 +1,176 @@
+{% load static from staticfiles %}
+
+<html lang="en">
+  <head>
+    {% block title %}<title>Dipesh Pal</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    {% block head_extra %} {% endblock head_extra%}
+  </head>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Logo</a>
+      </div>
+      <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+
+        <!----- Menu ----->
+        <ul class="nav navbar-nav">
+          <li {% block active_home %}  {% endblock %}><a href="/">Home</a></li>
+          <li {% block active_about %}  {% endblock %}><a href="#">About</a></li>
+        </ul>
+
+        {% if user.is_authenticated %}
+          <ul class="nav navbar-nav">
+            <li  {% block active_profile %}  {% endblock %}><a href="/accounts/profile/"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li  {% block active_logout %}  {% endblock %}><a href="/accounts/logout/"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+          </ul>
+        {% else %}
+           <ul class="nav navbar-nav">
+              <li  {% block active_login %}  {% endblock %}><a href="/accounts/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+           </ul>
+           <ul class="nav navbar-nav">
+              <li  {% block active_signup %}  {% endblock %}><a href="/accounts/signup/"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
+           </ul>
+        {% endif %}
+
+      </div>
+    </div>
+  </nav>
+<body>
+
+
+<!---- Sub Navigation Bar START----->
+<br><br><br><br><br><br>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar2">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Logo</a>
+      </div>
+
+      <div class="collapse navbar-collapse navbar-right" id="myNavbar2">
+        <!----- Menu ----->
+        <ul class="nav navbar-nav">
+          <li><a href="/">All</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!---- Sub Navigation Bar END----->
+
+
+  <main>
+  <div class="container-fluid text-center" style="margin-top: 3%">
+    <div class="row content">
+
+      {% block left_sidebar %}
+          <!----- Left Sidebar ----->
+          <div class="col-sm-2 sidenav">
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+          </div>
+      {% endblock %}
+
+
+      <!----- Mid ----->
+      {% block content %} {% endblock %}
+
+      {% block right_sidebar %}
+        <!----- Right Sidebar ----->
+        <div class="col-sm-2 sidenav">
+          <div class="well">
+            <p>ADS</p>
+          </div>
+          <div class="well">
+            <p>ADS</p>
+          </div>
+        </div>
+      {% endblock %}
+
+
+    </div>
+  </div>
+</main>
+
+</body>
+
+<footer class="footer-nav container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+
+  <!----- Scripts ----->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!----- Markdown ----->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.min.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function(){
+            $(".content-markdown").each(function(){
+                var content = $(this).text()
+                console.log(content)
+                var markedContent = marked(content)
+                console.log(markedContent)
+                $(this).html(markedContent)
+             })
+
+            $(".content-markdown img").each(function(){
+                $(this).addClass("img-responsive")
+             })
+        })
+
+
+  </script>
+
+  <!----- Footer ----->
+  <script type="text/javascript">
+        $(window).scroll(function(event) {
+        function footer()
+        {
+            var scroll = $(window).scrollTop();
+            if(scroll > 50)
+            {
+                $(".footer-nav").fadeIn("slow").addClass("show");
+            }
+            else
+            {
+                $(".footer-nav").fadeOut("slow").removeClass("show");
+            }
+
+            clearTimeout($.data(this, 'scrollTimer'));
+            $.data(this, 'scrollTimer', setTimeout(function() {
+                if ($('.footer-nav').is(':hover')) {
+                    footer();
+                }
+                else
+                {
+                    $(".footer-nav").fadeOut("slow");
+                }
+            }, 2000));
+        }
+        footer();
+        });
+
+  </script>
+ <!---------- Custom Css ---------->
+ <link href="{% static '/css/custom_css_header_and_body.css' %}" rel="stylesheet">
+
+</html>

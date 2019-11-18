@@ -1,0 +1,46 @@
+{% extends 'base_layout_clean.html' %}
+
+{% block title %}<title>Dipesh Pal - Login</title>{% endblock %}
+
+{% block active_login %} class="nav-item active" {% endblock %}
+
+{% block content %}
+<div class="container" style="margin: 10%">
+    <div class="row row-centered">
+        <div class="col-xs-8 col-centered">
+            <form class="form-style" method="post">
+                        <h2>Log in</h2>
+                        <hr>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {% if request.GET.next %}
+                            <input type="hidden" name="next" value="{{ request.GET.next }}">
+                        {% endif %}
+                        <!--<input type="submit" value="Login">-->
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!--    <div class="col-xs-8 col-centered" style="margin-top: 50px">-->
+<!--            <div class="container">-->
+<!--                <form class="form-style" method="post">-->
+<!--                        <h2>Log in</h2>-->
+<!--                        <hr>-->
+<!--                        {% csrf_token %}-->
+<!--                        {{ form.as_p }}-->
+<!--                        {% if request.GET.next %}-->
+<!--                            <input type="hidden" name="next" value="{{ request.GET.next }}">-->
+<!--                        {% endif %}-->
+<!--                        &lt;!&ndash;<input type="submit" value="Login">&ndash;&gt;-->
+<!--                        <button type="submit" class="btn btn-primary">Login</button>-->
+<!--                        <p><a href="{% url 'password_reset' %}">Reset Password</a></p>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--    </div>-->
+
+{% endblock %}

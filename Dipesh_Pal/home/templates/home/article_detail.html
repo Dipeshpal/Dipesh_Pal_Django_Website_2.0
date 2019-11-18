@@ -1,0 +1,42 @@
+{% extends 'base_layout_clean.html' %}
+
+
+{% block content %}
+    <div class="container" style="margin: 10%; padding: 2%">
+<!--        <div class="row row-centered">-->
+<!--            <div class="col-xs-8 col-centered" style="margin: 2%">-->
+
+                {% if user.is_authenticated%}
+                    {% if user.is_staff %}
+                    <ul>
+                      <a href="edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Update</a>
+                      <a href="delete" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Delete</a>
+                    </ul>
+                    {% endif %}
+                {% endif %}
+
+                <h2>{{ article.title }}</h2>
+                <img width="50%" height="50%" class="article-image" src="{{ article.thumb.url }}"/>
+                <!-- AddToAny BEGIN -->
+                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                    <a class="a2a_button_facebook"></a>
+                    <a class="a2a_button_twitter"></a>
+                    <a class="a2a_button_email"></a>
+                    <a class="a2a_button_linkedin"></a>
+                    <a class="a2a_button_whatsapp"></a>
+                    <a class="a2a_button_telegram"></a>
+                    <a class="a2a_button_pinterest"></a>
+                    <a class="a2a_button_skype"></a>
+                    <a class="a2a_button_sms"></a>
+                    <a class="a2a_button_google_gmail"></a>
+                </div>
+                <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+                <div class="article-detail content-markdown">
+                    <p>{{ article.body }}</p>
+                    <p>-{{ article.author }}, {{ article.date }}</p>
+                </div>
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+{% endblock %}
