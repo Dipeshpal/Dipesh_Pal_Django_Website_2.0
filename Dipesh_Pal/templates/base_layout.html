@@ -51,7 +51,7 @@
 
 
 <!---- Sub Navigation Bar START----->
-<br><br><br><br><br><br>
+<br><br><br>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -60,14 +60,19 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Logo</a>
+<!--        <a class="navbar-brand" href="/">Logo</a>-->
       </div>
 
-      <div class="collapse navbar-collapse navbar-right" id="myNavbar2">
+        <div class="collapse navbar-collapse navbar-left" id="myNavbar2">
         <!----- Menu ----->
         <ul class="nav navbar-nav">
-          <li><a href="/">All</a></li>
-          <li><a href="#">News</a></li>
+          <li {% block active_all_cat %} {% endblock %} ><a href="/">All</a></li>
+          <li {% block active_android_cat %} {% endblock %}><a href="/Android">Android</a></li>
+          <li {% block active_pc_cat %} {% endblock %}><a href="/PC">PC</a></li>
+          <li {% block active_news_cat %} {% endblock %}><a href="/News">News</a></li>
+          <li {% block active_ml_cat %} {% endblock %}><a href="/MachineLearning">Machine Learning</a></li>
+          <li {% block active_offers_cat %} {% endblock %}><a href="/Offers">Offers</a></li>
+          <li {% block active_others_cat %} {% endblock %}><a href="/Others">Others</a></li>
         </ul>
       </div>
     </div>

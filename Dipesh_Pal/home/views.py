@@ -59,6 +59,14 @@ def Offers(request):
     return render(request, 'home/Offers.html', {'articles': homeblog})
 
 
+def MachineLearning(request):
+    homeblog_list = Home.objects.all().order_by('-date')
+    paginator = Paginator(homeblog_list, 10)
+    page = request.GET.get('page')
+    homeblog = paginator.get_page(page)
+    return render(request, 'home/MachineLearning.html', {'articles': homeblog})
+
+
 def Others(request):
     homeblog_list = Home.objects.all().order_by('-date')
     paginator = Paginator(homeblog_list, 10)
