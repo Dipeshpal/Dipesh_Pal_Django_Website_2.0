@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     {% block head_extra %} {% endblock head_extra%}
   </head>
@@ -29,6 +31,12 @@
         </ul>
 
         {% if user.is_authenticated %}
+         {% if user.is_staff %}
+         <ul class="nav navbar-nav">
+           <li {% block articleCreateli %} {% endblock %}><a href="/create/"><span class="glyphicon glyphicon-pencil"></span> Create New Article</a></li>
+         </ul>
+         {% endif %}
+
           <ul class="nav navbar-nav">
             <li  {% block active_profile %}  {% endblock %}><a href="/accounts/profile/"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
           </ul>
@@ -95,19 +103,26 @@
 
 
       <!----- Mid ----->
+      <div class="col-sm-8">
       {% block content %} {% endblock %}
+      </div>
 
       {% block right_sidebar %}
         <!----- Right Sidebar ----->
         <div class="col-sm-2 sidenav">
-          <div class="well">
-            <p>ADS</p>
+          <div>
+            <h4>Our Social Stats-</h4>
+            <p><a href="https://www.youtube.com/channel/UCGEoRAK92fUk2kY3kSJMR_Q?view_as=subscriber" class="fa fa-youtube"></a> 10K+ Subscriber</p>
+            <p><a href="https://www.instagram.com/dipesh_pal17/" class="fa fa-instagram"></a> 350+ Followers</p>
+            <p><a href="https://www.facebook.com/dipeshpal17/" class="fa fa-facebook"></a> 500+ Followers</p>
+            <p><a href="https://twitter.com/Dipesh17pal" class="fa fa-twitter"></a> 80+ Followers</p>
           </div>
-          <div class="well">
-            <p>ADS</p>
-          </div>
+
+
+
         </div>
       {% endblock %}
+
 
 
     </div>

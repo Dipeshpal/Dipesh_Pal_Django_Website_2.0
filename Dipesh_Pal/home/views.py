@@ -14,7 +14,7 @@ def homepage(request):
 
     # Pagination
     # Show 10 Post Per Page
-    paginator = Paginator(homeblog_list, 10)
+    paginator = Paginator(homeblog_list, 8)
 
     page = request.GET.get('page')
     homeblog = paginator.get_page(page)
