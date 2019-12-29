@@ -114,16 +114,26 @@ def article_delete(request, slug):
 @login_required(login_url="/accounts/login/")
 def article_update(request, slug):
     instance = Home.objects.get(slug=slug)
+    instance_new = instance
     user = request.user
-    try:
-        if request.user.is_staff:
+    if request.user.is_staff:
+        if request.method == 'GET':
             form = forms.EditPostForm(instance=instance)
             args = {'form': form}
             # The line below cause delete previous post when do not save
             return render(request, 'home/article_edit.html', args)
         else:
-            return render(request, 'home/not_valid_user.html')
-    except:
+            form = forms.CreateArticle(request.POST, request.FILES)
+            args = {'form': form}
+            if form.is_valid():
+                # save article to db
+                print("Save to DB")
+                instance_new = form.save(commit=False)
+                instance_new.author = request.user
+                instance_new.save()
+                Home.objects.get(slug=slug, author_id=user).delete()
+                return redirect('home:home')
+    else:
         return render(request, 'home/not_valid_user.html')
 
 

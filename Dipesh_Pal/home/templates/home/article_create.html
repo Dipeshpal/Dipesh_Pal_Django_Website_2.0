@@ -6,17 +6,13 @@
 
 {% block content %}
 <div class="container" style="margin: 10%">
-<!--    <div class="row row-centered">-->
-<!--        <div class="col-xs-8 col-centered">-->
-            <h1>Create Article-</h1>
-            <form class="article-border article-detail" action="{% url 'home:create' %}" method="post" enctype="multipart/form-data">
-                <h2>Create your article</h2>
-                {% csrf_token %}
-                {{ form }}
-                <input type="submit" value="Create">
-            </form>
-            </div>
-<!--        </div>-->
-<!--    </div>-->
+    <h1>Create Article-</h1>
+    <form class="article-border article-detail" action="{% url 'home:create' %}" method="post" enctype="multipart/form-data">
+        <h2>Create your article</h2>
+        {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Create">
+    </form>
 </div>
+
 {% endblock %}

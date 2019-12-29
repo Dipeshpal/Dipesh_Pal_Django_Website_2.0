@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'videos',
     'django.contrib.sitemaps',
     'django.contrib.sites',
+    # 'markdown_deux',
 ]
 
 SITE_ID = 1
