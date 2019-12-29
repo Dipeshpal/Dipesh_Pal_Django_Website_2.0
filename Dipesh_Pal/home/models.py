@@ -13,6 +13,7 @@ class Home(models.Model):
         ('NEWS', 'News'),
         ('ANDROID', 'Android'),
         ('PC', 'PC'),
+        ('Machine Learning', 'Machine Learning'),
         ('OFFERS', 'Offers'),
         ('OTHERS', 'Others'),
     ]

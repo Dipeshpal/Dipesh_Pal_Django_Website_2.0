@@ -20,7 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&kiqyk_tpht)wla_y(0k(x7a#9%yih&7c%2-s-lylmfy8+lrqz'
+
+with open('Dipesh_Pal/secret_key.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +42,16 @@ INSTALLED_APPS = [
     'home',
     'accounts.apps.AccountsConfig',
     'pagedown',
+    'about',
+    'disclaimer',
+    'privacy_policy',
+    'contact_us',
+    'videos',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +64,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Dipesh_Pal.urls'
+
+STATICSITEMAPS_ROOT_SITEMAP = 'Dipesh_Pal.sitemaps.sitemaps'
 
 TEMPLATES = [
     {
@@ -69,6 +82,9 @@ TEMPLATES = [
         },
     },
 ]
+
+MARKDOWN_EDITOR_SKIN = 'simple'
+
 
 WSGI_APPLICATION = 'Dipesh_Pal.wsgi.application'
 
@@ -132,3 +148,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'noreplydipeshpal@gmail.com'
+with open('Dipesh_Pal/pw.txt') as f:
+    EMAIL_HOST_PASSWORD = f.read().strip()
+# EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Password reset <noreply@dipeshpal.com>'

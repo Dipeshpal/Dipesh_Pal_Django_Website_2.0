@@ -37,8 +37,29 @@ body {
 footer {
   background-color: #030303;
   color: white;
-  position: relative;
-  /*padding: 60px;*/
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-nav {
+    position: fixed;
+    z-index: 99999;
+    bottom: 0;
+    display: none;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.show, .footer-nav:hover {
+    display: block;
 }
 
 .jumbotron {
@@ -71,6 +92,11 @@ footer {
     margin-right:-4px;
     background-color: #ffffff;
     /*border: 1px solid #ddd;*/
+}
+
+.sub-nav{
+    margin: 2%;
+    background: #00dba0;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -167,6 +193,29 @@ footer {
     cursor: pointer;
 }
 
+.card-custom {
+    width: auto;
+    border-radius: 2%;
+    height: 40%;
+    background: white;
+    padding: 2%;
+}
+
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  color: white;
+}
+
+.fa:hover {
+  opacity: 0.7;
+  color: grey;
+}
+
 
 @media screen and (max-width: 480px) {
     .site-form {
@@ -177,6 +226,14 @@ footer {
         padding: 2px;
         color: black;
     }
+
+    .card-custom {
+    width: auto;
+    border-radius: 2%;
+    height: auto;
+    background: white;
+    padding: 2%;
+}
 
     .site-form input, .site-form textarea {
         display: block;
@@ -218,6 +275,8 @@ footer {
         margin: 10px 0;
         cursor: pointer;
     }
+
+
 }
 
 
