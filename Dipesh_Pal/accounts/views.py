@@ -3,6 +3,8 @@ from django.contrib.auth import login, update_session_auth_hash
 from . forms import RegistrationForm, EditProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
+import os
+from django.http import HttpResponse, Http404
 
 
 def signup_view(request):
@@ -36,6 +38,7 @@ def profile_edit(request):
         args = {'form': form}
         return render(request, 'accounts/edit_profile.html', args)
 
+
 @login_required
 def change_password(request):
     if request.method == 'POST':
@@ -55,3 +58,18 @@ def change_password(request):
 @login_required
 def apply(request):
     return render(request, 'accounts/apply.html')
+
+
+@login_required
+def download_db(request):
+    if request.user.is_superuser:
+        file_path = os.path.join('media/data.csv')
+        if os.path.exists(file_path):
+            with open(file_path, 'rb') as fh:
+                response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+                response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+                return response
+        raise Http404
+    else:
+        html = "<p>Invalid User</p>"
+        return HttpResponse(html)

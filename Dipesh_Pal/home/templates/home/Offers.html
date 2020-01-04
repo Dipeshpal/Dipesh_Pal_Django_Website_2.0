@@ -1,10 +1,45 @@
-{% extends 'base_layout_clean.html' %}
+{% extends 'base_layout.html' %}
 
 {% block active_offers_cat %} class="active" {% endblock %}
 
 
 {% block content %}
-<!--    {% block col %}  class="col-sm-12" {% endblock %}-->
+    {% for article in articles %}
+      {% if article.category == 'OFFERS' %}
+        <div class="col-sm-3 col-md-4 col-lg-3 mt-4" style="padding: 2%">
+            <div class="card card-custom">
+                <img class="card-img-top" style="width: 100%; height: auto" src="{{ article.thumb.url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h4  class="card-title"><a id="teal_heading" class="article-title" href="{% url 'home:detail' slug=article.slug %}">{{ article.title }}</a></h4>
+                     <small class="text-muted">{{ article.date | date:"F d, Y" }}</small>
+                    <p style="color: #333333">Category: {{ article.category }} <a class="mr-2" href="{% url 'home:detail' slug=article.slug %}"></a>-{{ article.author }}</p>
+                    <a href="{% url 'home:detail' slug=article.slug %}" class="btn btn-primary">View Article</a>
+                </div>
+            </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% block pagination %}
+         <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        {% if articles.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ articles.previous_page_number }}">previous</a></li>
+                        {% endif %}
 
-  <p>Offers</p>
+                        <span class="current">
+                            <li class="page-item active"><a class="page-link">Page {{ articles.number }} of {{ articles.paginator.num_pages }}  </a></li>
+                        </span>
+
+                        {% if articles.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ articles.next_page_number }}">next</a></li>
+                            <li class="page-item"><a class="page-link" href="?page={{ articles.paginator.num_pages }}">last &raquo;</a></li>
+                        {% endif %}
+                    </span>
+            </ul>
+         </nav>
+  {% endblock %}
 {% endblock %}
+

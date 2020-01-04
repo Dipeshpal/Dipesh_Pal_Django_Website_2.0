@@ -19,5 +19,13 @@
             <p style="color: #0F0F0F"><b>You can be author for our website:</b> Just fill this form <a href="/accounts/apply/">Click here</a></p>
         </div>
     </div>
+    <hr>
+    {% if user.is_authenticated %}
+         {% if user.is_superuser %}
+            <h2>Admin Panel</h2>
+                <p>Download Data <a href="/accounts/download_db/">Click Here</a></p>
+         {% endif %}
+    {% endif %}
 </div>
+
 {% endblock %}

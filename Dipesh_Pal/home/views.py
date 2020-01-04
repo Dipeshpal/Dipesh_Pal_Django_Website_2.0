@@ -3,10 +3,18 @@ from . models import Home
 from django.contrib.auth.decorators import login_required
 from . import forms
 from django.core.paginator import Paginator
+import pandas as pd
+import datetime
 
 
 def homepage(request):
-    # return render(request, 'home/home.html')
+    try:
+        user_id = str(request.user.id)
+        user_love_to_read = request.COOKIES[user_id]
+        print("user_love_to_read:::::::::::::::::::::: ", user_love_to_read)
+    except:
+        print("user_love_to_read: User Not Login")
+
     a = 9.8  # YouTube
     b = 343  # Instagram
     c = 50  # Twitter
@@ -137,6 +145,44 @@ def article_update(request, slug):
         return render(request, 'home/not_valid_user.html')
 
 
+def what_user_read(request, article):
+    if request.user.is_authenticated:
+        user = request.user.email
+        content = article.title + article.body
+        category = article.category
+        date = datetime.datetime.today()
+
+        usr = [user]
+        con = [content.replace(',', ' ')]
+        cat = [category]
+        date_ = [date]
+
+        data = {'user': usr, 'date': date_, 'content': con, 'category': cat}
+
+        df = pd.DataFrame(data)
+
+        df.to_csv('media/user_data/what_user_read.csv', mode='a', header=False, index=False)
+
+
+def get_user_id(request):
+    try:
+        user_id = request.user.id
+        return user_id
+    except:
+        print("User is currently not login")
+
+
 def article_detail(request, slug):
     article = Home.objects.get(slug=slug)
-    return render(request, 'home/article_detail.html', {'article': article})
+    category = article.category
+
+    # what user love to read logs
+    what_user_read(request, article)
+    user_id = get_user_id(request)
+
+    response = render(request, 'home/article_detail.html', {'article': article})
+
+    # save in cookie what category user read last time
+    response.set_cookie(str(user_id), category)
+
+    return response

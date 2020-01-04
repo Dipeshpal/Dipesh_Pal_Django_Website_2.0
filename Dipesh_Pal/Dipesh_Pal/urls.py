@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from home.sitemaps import PostSitemap, StaticViewSitemap
 from django.contrib.sitemaps.views import sitemap
 from django.conf.urls import url
+# from django.views.static import serve
 
 
 sitemaps = {
@@ -32,6 +33,8 @@ urlpatterns = [
     path('privacy_policy/', include('privacy_policy.urls')),
     path('contact_us/', include('contact_us.urls'), name='contact_us'),
     path('videos/', include('videos.urls'), name='videos'),
+    # url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    # url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
 
 
