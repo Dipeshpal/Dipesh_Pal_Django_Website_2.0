@@ -13,11 +13,9 @@ def homepage(request):
         user_love_to_read = request.COOKIES[user_id]
         print("user_love_to_read:::::::::::::::::::::: ", user_love_to_read)
     except:
+        user_love_to_read = 'ANDROID'
         print("user_love_to_read: User Not Login")
 
-    a = 9.8  # YouTube
-    b = 343  # Instagram
-    c = 50  # Twitter
     homeblog_list = Home.objects.all().order_by('-date')
 
     # Pagination
@@ -28,9 +26,7 @@ def homepage(request):
     homeblog = paginator.get_page(page)
     articles = {
         'articles': homeblog,
-        'youtube_subscriber': a,
-        'instagram_followers': b,
-        'twitter_followers': c,
+        'user_love_to_read': user_love_to_read,
     }
     return render(request, 'home/home.html', articles)
 

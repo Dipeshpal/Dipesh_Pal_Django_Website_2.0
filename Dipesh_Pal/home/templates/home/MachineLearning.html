@@ -7,7 +7,7 @@
       {% if article.category == 'Machine Learning' %}
         <div class="col-sm-3 col-md-4 col-lg-3 mt-4" style="padding: 2%">
             <div class="card card-custom">
-                <img class="card-img-top" style="width: 100%; height: auto" src="{{ article.thumb.url }}" alt="Card image cap">
+                <img class="card-img-top" style="width: 100%; height: 40%" src="{{ article.thumb.url }}" alt="Card image cap">
                 <div class="card-body">
                     <h4  class="card-title"><a id="teal_heading" class="article-title" href="{% url 'home:detail' slug=article.slug %}">{{ article.title }}</a></h4>
                      <small class="text-muted">{{ article.date | date:"F d, Y" }}</small>

@@ -2,6 +2,20 @@
 
 {% block active_home %} class="active"  {% endblock %}
 
+{% block left_sidebar %}
+    <div class="col-sm-2 sidenav">
+        <h4>You may interested in-</h4>
+        <p></p>
+        {% for article in articles %}
+            {% if article.category == user_love_to_read %}
+               <li class="card-title" style="text-align: left; list-style-type:none;"><a class="article-title" href="{% url 'home:detail' slug=article.slug %}">{{ article.title }}</a></li>
+                <br>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
 {% block content %}
  {% for article in articles %}
     <div class="col-sm-3 col-md-4 col-lg-3 mt-4" style="padding: 2%">

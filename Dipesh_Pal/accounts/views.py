@@ -63,7 +63,7 @@ def apply(request):
 @login_required
 def download_db(request):
     if request.user.is_superuser:
-        file_path = os.path.join('media/data.csv')
+        file_path = os.path.join('media/user_data/what_user_read.csv')
         if os.path.exists(file_path):
             with open(file_path, 'rb') as fh:
                 response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
