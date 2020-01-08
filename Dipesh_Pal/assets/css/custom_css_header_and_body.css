@@ -124,6 +124,7 @@ footer {
 /* article */
 
 .article-detail{
+    padding: 2%;
     text-align: left;
 }
 

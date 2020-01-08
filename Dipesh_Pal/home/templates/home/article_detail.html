@@ -40,49 +40,60 @@
                 </div>
 
     <br><hr><br>
-    <h4 style="text-align: left">Comment-</h4>
-    <form class="article-border article-detail" action="." method="post" style="color: black; text-align: left">
-        <p>Name: {{ comment_form.Name }}</p>
-        <p>Email: {{ comment_form.Email }}</p>
-        <p>Comment: {{ comment_form.Body }}</p>
-        {% csrf_token %}
-        <button type="submit" value="Submit">Add Comment</button>
-    </form>
 
-    <div style="text-align: left">
-    {% for comment in comments %}
-        <div class="container_comment" style="padding: 1%; background: #4d4f51; color: white">
-            <b>By- {{ comment.Name }} | {{ comment.Created }}</b>
-            <p>{{ comment.Body }}</p>
+     <!---- Create New Comment Start---->
+    <h4 style="text-align: left">Comments-</h4>
+    {% if user.is_authenticated %}
+        <form class="article-border article-detail" action="." method="post" style="color: black; text-align: left">
+            <p>Name: {{ comment_form.Name }} </p>
+            <p>Comment: {{ comment_form.Body }}</p>
+            {% csrf_token %}
+            <button type="submit" value="Submit">Add Comment</button>
+        </form>
+    {% else %}
+        <p style="text-align: left; color:#292929;"><a href="/accounts/login/">Login</a> to comment</p>
+    {% endif %}
+    <!---- Create New Comment End---->
 
-        {% for reply in comment.replies.all %}
-            <div class="container_comment" style="padding: 1%; background: #5f6163; color: white">
-                <p>Reply by- {{ reply.Name }}</p>
-                <p>{{ reply.Body }}</p>
-            </div>
-        {% endfor %}
+    <!---- Users Comments Start ---->
+        <div style="text-align: left">
+            {% for comment in comments %}
+                <div class="container_comment" style="padding: 1%; background: #4d4f51; color: white">
+                    <b>By- {{ comment.Name }} | {{ comment.Created }}</b>
+                    <p>{{ comment.Body }}</p>
+
+                <!---- Replies of comments Start ---->
+                {% for reply in comment.replies.all %}
+                    <div class="container_comment" style="padding: 1%; background: #5f6163; color: white">
+                        <b>Reply by- {{ reply.Name }}</b>
+                        <p>{{ reply.Body }}</p>
+                    </div>
+                    <br>
+                {% endfor %}
+                <!---- Replies of comments End ---->
+
+                <!---- Create Reply on Thread Start---->
+                {% if user.is_authenticated %}
+                   <button style="color: black; background: white; border-radius: 2%" onclick="hide_reply_option_{{ comment.id }}()">Reply Thread</button>
+                   <div style="display: none" class="hideDiv{{ comment.id }}">
+                       <form class="article-border article-detail" action="." method="post" style="color: black; text-align: left">
+                           <b>Name: {{ comment_form.Name }}</b>
+                           <p>Comment: {{ comment_form.Body }}</p>
+                           {% csrf_token %}
+                           <input type="hidden" name="Parent_id" value="{{ comment.id }}">
+                           <button type="submit" value="Submit">Add Reply</button>
+                       </form>
+                   </div>
+                {% else %}
+                   <p style="text-align: left; color:white;"><a href="/accounts/login/">Login</a> to Reply</p>
+                {% endif %}
+                <!---- Create Reply on Thread Start End---->
+                </div>
+                <br>
+                {% empty %}
+                    <h4>There is no comment...</h4>
+            {% endfor %}
         </div>
-
-        <button onclick="hide_reply_option()">Click Me</button>
-        <div style="display: none" class="hideDIV">
-            <form class="article-border article-detail" action="." method="post" style="color: black; text-align: left">
-                <p>Name: {{ comment_form.Name }}</p>
-                <p>Email: {{ comment_form.Email }}</p>
-                <p>Comment: {{ comment_form.Body }}</p>
-                {% csrf_token %}
-                <input type="hidden" name="Parent_id" value="{{ comment.id }}">
-                <button type="submit" value="Submit">Add Reply</button>
-            </form>
-        </div>
-
-
-
-
-    {% empty %}
-    <h4>There is no comment...</h4>
-
-    {% endfor %}
-    </div>
-
+    <!---- Users Comments End ---->
     </div>
 {% endblock %}

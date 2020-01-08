@@ -180,9 +180,10 @@
             <!---------- Custom Css ---------->
             <link href="{% static '/css/custom_css_header_and_body.css' %}" rel="stylesheet">
 
+            {% for comment in comments %}
             <script>
-                function hide_reply_option() {
-                      var x = document.getElementsByClassName("hideDIV")[0];
+                function hide_reply_option_{{ comment.id }}() {
+                      var x = document.getElementsByClassName("hideDiv{{ comment.id }}")[0];
                       if (x.style.display === "block") {
                         x.style.display = "none";
                       } else {
@@ -190,6 +191,8 @@
                       }
                     }
             </script>
+            {% endfor %}
+
 
         <!----- Scripts and CSS End----->
 
