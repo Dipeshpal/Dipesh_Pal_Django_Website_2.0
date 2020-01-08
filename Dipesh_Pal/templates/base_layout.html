@@ -180,6 +180,17 @@
             <!---------- Custom Css ---------->
             <link href="{% static '/css/custom_css_header_and_body.css' %}" rel="stylesheet">
 
+            <script>
+                function hide_reply_option() {
+                      var x = document.getElementsByClassName("hideDIV")[0];
+                      if (x.style.display === "block") {
+                        x.style.display = "none";
+                      } else {
+                        x.style.display = "block";
+                      }
+                    }
+            </script>
+
         <!----- Scripts and CSS End----->
 
     <!----- Footer End ----->

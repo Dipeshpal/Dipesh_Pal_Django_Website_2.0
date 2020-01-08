@@ -22,3 +22,9 @@ class DeleteNewForm(forms.ModelForm):
     class Meta:
         model = models.Home
         fields = []
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = models.Comment
+        fields = ('Name', 'Email', 'Body')

@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . models import Home
 from django.contrib.auth.decorators import login_required
 from . import forms
+from . forms import *
+from .models import *
 from django.core.paginator import Paginator
 import pandas as pd
 import datetime
@@ -176,9 +178,79 @@ def article_detail(request, slug):
     what_user_read(request, article)
     user_id = get_user_id(request)
 
-    response = render(request, 'home/article_detail.html', {'article': article})
+    # # comments
+    comments = article.comments.filter(Active=True, Parent__isnull=True)
+
+    # post = get_object_or_404(Blog, Slug=slug)
+    # comments = post.comments.filter(Active=True, Parent__isnull=True)
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid:
+            Parent_obj = None
+            try:
+                Parent_id = int(request.POST.get('Parent_id'))
+            except:
+                Parent_id = None
+            if Parent_id:
+                Parent_obj = Comment.objects.get(id=Parent_id)
+                if Parent_obj:
+                    reply_comment = comment_form.save(commit=False)
+                    reply_comment.Parent = Parent_obj
+            new_comment = comment_form.save(commit=False)
+            new_comment.Post = article
+            new_comment.save()
+            return redirect('home:detail', slug)
+    else:
+        comment_form = CommentForm()
+
+    response = render(request, 'home/article_detail.html', {'article': article, 'comments': comments, 'comment_form': comment_form })
 
     # save in cookie what category user read last time
     response.set_cookie(str(user_id), category)
 
     return response
+
+    # article = Home.objects.get(slug=slug)
+    # category = article.category
+    #
+    # # what user love to read logs
+    # what_user_read(request, article)
+    # user_id = get_user_id(request)
+    #
+    # # post = get_object_or_404(Home, slug=slug)
+    # # comments
+    # comments = article.comments.filter(Active=True, Parent__isnull=True)
+    # if request.method == 'POST':
+    #     comment_form = forms.CommentForm(data=request.POST)
+    #     if comment_form.is_valid():
+    #         Parent_obj = None
+    #         try:
+    #             Parent_id = int(request.POST.get('Parent_id'))
+    #         except:
+    #             Parent_id = None
+    #         if Parent_id:
+    #             Parent_obj = Comment.objects.get(id=Parent_id)
+    #             if Parent_obj:
+    #                 reply_comment = comment_form.save(commit=False)
+    #                 reply_comment.Parent = Parent_obj
+    #         new_comment = comment_form.save(commit=False)
+    #         new_comment.Post = article
+    #         new_comment.save()
+    #         return redirect('home:home')
+    #         # return redirect('home:detail', slug)
+    #     else:
+    #         comment_form = forms.CommentForm()
+    #
+    #     # response = render(request, 'home/article_detail.html', {'article': article, 'comment': comments, 'comment_form': comment_form })
+    #
+    # # response = render(request, 'home/article_detail.html',
+    # #                   {'article': article})
+    #
+    # # save in cookie what category user read last time
+    # #     response.set_cookie(str(user_id), category)
+    #
+    # # return response
+    #     return render(request, 'home/article_detail.html', {'article': article, 'comment': comments, 'comment_form': comment_form})
+
+
+

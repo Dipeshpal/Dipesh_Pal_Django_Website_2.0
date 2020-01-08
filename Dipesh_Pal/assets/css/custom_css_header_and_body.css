@@ -21,6 +21,18 @@ body {
   color: #0F0F0F;
 }
 
+.container_comment {
+  border-radius: 10px;
+  background: white;
+  color: #0F0F0F;
+  width: auto;
+}
+/*.comment-container{*/
+/*    border-radius: 10%;*/
+/*    background: #cccccc;*/
+/*    color: white;*/
+/*}*/
+
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
   height: 100%;

@@ -45,3 +45,19 @@ def slug_generator(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(slug_generator, sender=Home)
+
+
+class Comment(models.Model):
+    Post = models.ForeignKey(Home, on_delete=models.CASCADE, related_name='comments')
+    Name = models.CharField(max_length=100)
+    Email = models.EmailField(max_length=100)
+    Body = models.TextField()
+    Created = models.DateTimeField(auto_now_add=True)
+    Active = models.BooleanField(default=True)
+    Parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='replies')
+
+    class Meta:
+        ordering = ('Created',)
+
+    def __str__(self):
+        return 'Comment By {}'.format(self.Name)
