@@ -1,0 +1,1 @@
+web: python manage.py collectstatic --noinput; gunicorn Dipesh_Pal.wsgi --log-file -; gunicorn Dipesh_Pal.wsgi

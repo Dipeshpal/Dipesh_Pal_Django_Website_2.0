@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -49,7 +50,6 @@ INSTALLED_APPS = [
     'videos',
     'django.contrib.sitemaps',
     'django.contrib.sites',
-    # 'markdown_deux',
 ]
 
 SITE_ID = 1
@@ -162,3 +162,7 @@ with open('Dipesh_Pal/pw.txt') as f:
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Password reset <noreply@dipeshpal.com>'
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

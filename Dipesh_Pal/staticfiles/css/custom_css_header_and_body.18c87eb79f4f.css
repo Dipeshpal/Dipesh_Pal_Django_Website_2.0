@@ -1,0 +1,295 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+
+/* Navbar #030303 */
+/* Background 0F0F0F */
+/* Sidebar #080808 */
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: #030303;
+}
+
+body {
+  background-color: #0F0F0F;
+  color: #ffffff;
+}
+
+.container {
+  border-radius: 10px;
+  background: white;
+  color: #0F0F0F;
+}
+
+.container_comment {
+  border-radius: 10px;
+  background: white;
+  color: #0F0F0F;
+  width: auto;
+}
+/*.comment-container{*/
+/*    border-radius: 10%;*/
+/*    background: #cccccc;*/
+/*    color: white;*/
+/*}*/
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+  height: 100%;
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #080808;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #030303;
+  color: white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-nav {
+    position: fixed;
+    z-index: 99999;
+    bottom: 0;
+    display: none;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.show, .footer-nav:hover {
+    display: block;
+}
+
+.jumbotron {
+  align-items: center;
+  background-color: #ffffff;
+  color: #0F0F0F;
+}
+
+.row-centered {
+    text-align:center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:center;
+    /* inline-block space fix */
+    margin-right:-4px;
+    background-color: #ffffff;
+    /*border: 1px solid #ddd;*/
+}
+
+.col-left {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    background-color: #ffffff;
+    /*border: 1px solid #ddd;*/
+}
+
+.sub-nav{
+    margin: 2%;
+    background: #00dba0;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    margin-top: 8%;
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+
+/* article */
+
+.article-detail{
+    padding: 2%;
+    text-align: left;
+}
+
+.article-border{
+    padding: 2%;
+    margin: 2%;
+    background: white;
+    color: black;
+    border: 1px solid grey;
+    border-radius: 5px;
+    postion: relative;
+}
+
+/* Text Typing Area*/
+.wmd-button-row{
+    padding: auto;
+}
+
+.wmd-panel{
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+    min-width: 100%;
+}
+
+
+/* form */
+.form-style{
+    background: white;
+}
+
+
+.site-form{
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 2px solid #252526;
+    padding: 50px;
+    color: black;
+}
+
+.site-form input, .site-form textarea{
+    display: block;
+    margin: 2%;
+    padding: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+.helptext, helptext ul{
+    margin: 0 auto 10px;
+    color: #252526;
+    font-size: 0.9em;
+    display: block;
+}
+.signup-text{
+    text-align: center;
+    color: #39393a;
+}
+.errorlist li{
+    padding: 10px;
+    list-style-type: none;
+    border: 1px solid #ff5722;
+    color: #ff5722;
+    margin: 10px 0;
+}
+.errorlist{
+    padding: 0;
+}
+
+
+.site-form input[type=submit]{
+    background: #00dba0;
+    border: 0;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 4px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.card-custom {
+    width: auto;
+    border-radius: 2%;
+    height: 40%;
+    background: white;
+    padding: 2%;
+}
+
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  color: white;
+}
+
+.fa:hover {
+  opacity: 0.7;
+  color: grey;
+}
+
+
+@media screen and (max-width: 480px) {
+    .site-form {
+        margin-top: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        border: 2px solid #252526;
+        padding: 2px;
+        color: black;
+    }
+
+    .card-custom {
+    width: auto;
+    border-radius: 2%;
+    height: auto;
+    background: white;
+    padding: 2%;
+}
+
+    .site-form input, .site-form textarea {
+        display: block;
+        margin: 5px 0 0 0;
+        padding: 5px;
+        width: 100%;
+    }
+
+    .helptext, helptext ul {
+        margin: 0 auto 10px;
+        color: #252526;
+        font-size: 0.9em;
+        display: block;
+    }
+
+    .signup-text {
+        text-align: center;
+        color: #39393a;
+    }
+
+    .errorlist li {
+        padding: 10px;
+        list-style-type: none;
+        border: 1px solid #ff5722;
+        color: #ff5722;
+        margin: 10px 0;
+    }
+
+    .errorlist {
+        padding: 0;
+    }
+
+    .site-form input[type=submit] {
+        background: #00dba0;
+        border: 0;
+        color: #fff;
+        font-size: 1.2em;
+        border-radius: 4px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+
+
+}
+
+

@@ -5,9 +5,9 @@
 {% block active_login %} class="nav-item active" {% endblock %}
 
 {% block content %}
+<!--    {% block col %}  class="col-sm-12" {% endblock %}-->
 <div class="container" style="margin: 10%">
     <div class="row row-centered">
-        <div class="col-xs-8 col-centered">
             <form class="form-style" method="post">
                         <h2>Log in</h2>
                         <hr>
@@ -21,7 +21,6 @@
                         <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
             </form>
             <p>By login you are accepting all our <a href="/disclaimer/disclaimer.html">Terms and Conditions</a></p>
-        </div>
     </div>
 </div>
 

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . models import Home
 from django.contrib.auth.decorators import login_required
+# from . forms import *
 from . import forms
-from . forms import *
 from .models import *
 from django.core.paginator import Paginator
 import pandas as pd
