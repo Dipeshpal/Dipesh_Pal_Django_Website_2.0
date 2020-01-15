@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 # from . forms import *
 from . import forms
 from .models import *
+from . forms import CommentForm
 from django.core.paginator import Paginator
 import pandas as pd
 import datetime
