@@ -12,16 +12,21 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import django_heroku
 import os
-import dj_database_url
-import dotenv
+# import dj_database_url
+# import dotenv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+# dotenv_file = os.path.join(BASE_DIR, ".env")
+# if os.path.isfile(dotenv_file):
+#     dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -32,7 +37,7 @@ with open('Dipesh_Pal/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'dipeshpal.com', 'www.dipeshpal.com']
 
@@ -48,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'accounts.apps.AccountsConfig',
-    'pagedown',
     'about',
     'disclaimer',
     'privacy_policy',
@@ -56,6 +60,8 @@ INSTALLED_APPS = [
     'videos',
     'django.contrib.sitemaps',
     'django.contrib.sites',
+    'cloudinary',
+    'pagedown',
 ]
 
 SITE_ID = 1
@@ -91,11 +97,15 @@ TEMPLATES = [
     },
 ]
 
-MARKDOWN_EDITOR_SKIN = 'simple'
-
-
 WSGI_APPLICATION = 'Dipesh_Pal.wsgi.application'
 
+cloudinary.config(
+  cloud_name="hx5cu500t",
+  api_key="121861648543648",
+  api_secret="rJounTzpTpam_pCwpcS2TOEXikQ"
+)
+
+MARKDOWN_EDITOR_SKIN = 'simple'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -106,8 +116,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
@@ -177,4 +187,3 @@ DEFAULT_FROM_EMAIL = 'Password reset <noreply@dipeshpal.com>'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-# del DATABASES['default']['OPTIONS']['sslmode']

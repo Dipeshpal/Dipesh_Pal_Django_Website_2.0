@@ -8,14 +8,14 @@ class CreateArticle(forms.ModelForm):
     body = forms.CharField(widget=PagedownWidget)
     class Meta:
         model = models.Home
-        fields = ['title', 'category', 'body', 'thumb']
+        fields = ['title', 'category', 'body', 'thumbnail']
 
 
 class EditPostForm(UserChangeForm):
     body = forms.CharField(widget=PagedownWidget)
     class Meta:
         model = models.Home
-        fields = ['title', 'category', 'body', 'thumb']
+        fields = ['title', 'category', 'body', 'thumbnail']
 
 
 class DeleteNewForm(forms.ModelForm):

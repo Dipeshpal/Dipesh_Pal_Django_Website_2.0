@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
 from Dipesh_Pal.utils import unique_slug_generator
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -27,6 +28,7 @@ class Home(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(default='default.png', blank=True)
+    thumbnail = CloudinaryField('image')
     author = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
 
     def __str__(self):
