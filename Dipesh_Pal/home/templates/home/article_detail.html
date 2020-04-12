@@ -5,7 +5,7 @@
 {% block content %}
 <!--    {% block col %}  class="col-sm-12" {% endblock %}-->
 
-    <div class="container" style="margin: 10%; padding: 2%">
+    <div class="container" style="margin: auto; padding: 1%">
 <!--        <div class="row row-centered">-->
 <!--            <div class="col-xs-8 col-centered" style="margin: 2%">-->
 
@@ -20,7 +20,7 @@
 
                 <h2>{{ article.title }}</h2>
 <!--                <img width="70%" height="50%" class="article-image" src="https://i.ibb.co/k9jZb6x/default.png"/>-->
-                    <img style="width:70%; height:50%" class="article-image" {%cloudinary article.thumbnail%}
+                    <img style="width:100%; height:auto" class="article-image" {%cloudinary article.thumbnail%}
                 <!-- AddToAny BEGIN -->
                 <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                     <a class="a2a_button_facebook"></a>
