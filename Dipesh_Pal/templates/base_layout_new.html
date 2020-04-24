@@ -1,0 +1,231 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <!---- Ad ----->
+    <script data-ad-client="ca-pub-6717309277759744" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    {% block title %}<title>Dipesh Pal</title>{% endblock %}
+    <link rel="shortcut icon" href="https://i.ibb.co/yBcV3jY/00013850.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+     <!-- Youmax CSS and JS -->
+    <link rel="stylesheet" href="https://rawcdn.githack.com/Dipeshpal/Dipesh_Pal_Django_Website_2.0/037067930b047be09afe21decf0233e1660d7e85/Dipesh_Pal/assets/css/youmax.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://rawcdn.githack.com/Dipeshpal/Dipesh_Pal_Django_Website_2.0/037067930b047be09afe21decf0233e1660d7e85/Dipesh_Pal/assets/js/youmax.js"></script>
+
+    <!---- New 2.0 --->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://rawcdn.githack.com/Dipeshpal/CDN-nav-dipeshpal-2.0/371501dfff224ac5e0b25efde25960c67d6b0c1f/snippet/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://rawcdn.githack.com/Dipeshpal/CDN-nav-dipeshpal-2.0/371501dfff224ac5e0b25efde25960c67d6b0c1f/snippet/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="https://rawcdn.githack.com/Dipeshpal/CDN-nav-dipeshpal-2.0/371501dfff224ac5e0b25efde25960c67d6b0c1f/snippet/css/style.css" rel="stylesheet">
+    <!---- New 2.0 --->
+
+
+    {% block head_extra %} {% endblock head_extra%}
+  </head>
+
+  <!--- NavBar 2.0 Start --->
+      <nav class="navbar navbar-expand-lg navbar-dark purple-gradient fixed-top sticky-top">
+
+      <div class="content row">
+          <!-- Collapse button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <a href="/"><img style="width: 10%; margin: 2%" src="https://i.ibb.co/yBcV3jY/00013850.png"></a>
+      </div>
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" {% block active_home %}  {% endblock %}><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Read Articles</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="/">All</a>
+                  <a class="dropdown-item" href="/Android">Android</a>
+                  <a class="dropdown-item" href="/PC">PC</a>
+                  <a class="dropdown-item" href="/News">News</a>
+                  <a class="dropdown-item" href="/MachineLearning">Machine Learning</a>
+                  <a class="dropdown-item" href="/Offers">Offers</a>
+                  <a class="dropdown-item" href="/Others">Others</a>
+                </div>
+            </li>
+
+            <li class="nav-item" {% block active_videos %}  {% endblock %}><a class="nav-link"  href="/videos/videos.html">Videos</a></li>
+            <li class="nav-item" {% block active_about %}  {% endblock %}><a class="nav-link"  href="/about/about.html">About</a></li>
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li class="nav-item" {% block articleCreateli %} {% endblock %}><a class="nav-link" href="/create/"><span class="glyphicon glyphicon-pencil"></span> Create New Article</a></li>
+                {% endif %}
+                    <li class="nav-item" {% block active_profile %}  {% endblock %}><a class="nav-link" href="/accounts/profile/"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <li class="nav-item" {% block active_logout %}  {% endblock %}><a class="nav-link" href="/accounts/logout/"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+                {% else %}
+                    <li class="nav-item" {% block active_login %}  {% endblock %}><a class="nav-link" href="/accounts/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li class="nav-item" {% block active_signup %}  {% endblock %}><a class="nav-link" href="/accounts/signup/"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
+            {% endif %}
+        </ul>
+
+        <!-- Links Search-->
+<!--        <form class="form-inline">-->
+<!--          <div class="md-form my-0">-->
+<!--            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+<!--          </div>-->
+<!--        </form>-->
+      </div>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+  <!--- NavBar 2.0 End --->
+<body>
+<div id="container">
+   <div id="body">
+        <main>
+          <div class="container-fluid text-center" style="margin-top: 1%; position: relative; min-height: 100vh;">
+            <div class="row content">
+              <!----- Left Sidebar ----->
+              {% block left_sidebar %}
+                  <div class="left-sidebar col-sm-2 sidenav">
+                  </div>
+              {% endblock %}
+              <!----- Left Sidebar End----->
+
+              <!----- Mid Block----->
+              <div {% block col %}  class="mid-bar col-sm-8" {% endblock %} >
+                  <!----- Pagination ----->
+                  {% block content %}
+                  {% block pagination %}{% endblock %}
+                  {% endblock %}
+                  <!----- Pagination End----->
+              </div>
+              <!----- Mid Block End----->
+
+              <!----- Right Sidebar ----->
+              {% block right_sidebar %}
+                <div class="right-sidebar col-sm-2 sidenav">
+                  <div class="container right-sidebar-container">
+                    <h5>Our Social Stats-</h5>
+                    <h6><i class="fab fa-youtube"><a style="color: #1b1e21" href="https://www.youtube.com/channel/UCGEoRAK92fUk2kY3kSJMR_Q?view_as=subscriber"> 10K+ Subscriber</a></i></h6>
+                    <h6><i class="fab fa-instagram"><a style="color: #1b1e21" href="https://www.instagram.com/dipesh_pal17/"> 500+ Followers</a></i></h6>
+                    <h6><i class="fab fa-facebook"><a style="color: #1b1e21" href="https://www.facebook.com/dipeshpal17/">  500+ Followers</a></i></h6>
+                    <h6><i class="fab fa-twitter"><a style="color: #1b1e21" href="https://twitter.com/Dipesh17pal">  100+ Followers</a></i></h6></div>
+                  </div>
+                </div>
+              {% endblock %}
+              <!----- Right Sidebar End----->
+            </div>
+        </main>
+    </div>
+
+   <!-- Footer -->
+   <div>
+     <footer style="padding-top: 10%" class="page-footer font-small special-color-dark pt-4 fixed-bottom">
+      <div class="container">
+        <ul class="list-unstyled list-inline text-center">
+          <li class="list-inline-item">
+            <a style="color: #0F0F0F" href="https://www.facebook.com/dipeshpal17/" class="btn-floating btn-fb mx-1">
+              <i class="fab fa-facebook-f"> </i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a style="color: #0F0F0F" href="https://twitter.com/Dipesh17pal" class="btn-floating btn-tw mx-1">
+              <i class="fab fa-twitter"> </i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a style="color: #0F0F0F" href="https://www.instagram.com/dipesh_pal17/" class="btn-floating btn-gplus mx-1">
+              <i class="fab fa-instagram"> </i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a style="color: #0F0F0F" href="https://www.linkedin.com/in/dipesh-pal-a34952110/" class="btn-floating btn-li mx-1">
+              <i class="fab fa-linkedin-in"> </i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a style="color: #0F0F0F" href="https://www.youtube.com/channel/UCGEoRAK92fUk2kY3kSJMR_Q?view_as=subscriber" class="btn-floating btn-dribbble mx-1">
+              <i class="fab fa-youtube"> </i>
+            </a>
+          </li>
+        </ul>
+      </div>
+         <ul>
+              <li>
+                  <a href="/contact_us/contact_us.html">Contact Us</a>
+                  <a href="/disclaimer/disclaimer.html">Disclaimer and Terms & Conditions</a>
+                  <a href="/privacy_policy/privacy_policy.html">Privacy Policy</a>
+              </li>
+          </ul>
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://dipeshpal.com/">Dipesh Pal 2019-2020. All Rights Reserved</a>
+      </div>
+     </footer>
+   </div>
+   <!-- Footer End-->
+</div>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://rawcdn.githack.com/Dipeshpal/CDN-nav-dipeshpal-2.0/371501dfff224ac5e0b25efde25960c67d6b0c1f/snippet/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://rawcdn.githack.com/Dipeshpal/CDN-nav-dipeshpal-2.0/371501dfff224ac5e0b25efde25960c67d6b0c1f/snippet/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://rawcdn.githack.com/Dipeshpal/CDN-nav-dipeshpal-2.0/371501dfff224ac5e0b25efde25960c67d6b0c1f/snippet/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://rawcdn.githack.com/Dipeshpal/CDN-nav-dipeshpal-2.0/371501dfff224ac5e0b25efde25960c67d6b0c1f/snippet/js/mdb.min.js"></script>
+    <script type="text/javascript"></script>
+    <!-- SCRIPTS -->
+</body>
+        <!----- Scripts and CSS----->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!----- Markdown ----->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+                $(".content-markdown").each(function(){
+                    var content = $(this).text()
+                    console.log(content)
+                    var markedContent = marked(content)
+                    console.log(markedContent)
+                    $(this).html(markedContent)
+                 })
+
+                $(".content-markdown img").each(function(){
+                    $(this).addClass("img-responsive")
+                 })
+            })
+        </script>
+        <!----- Markdown End----->
+
+        <!---------- Custom Css ---------->
+<!--            <link href="https://rawcdn.githack.com/Dipeshpal/Dipesh_Pal_Django_Website_2.0/037067930b047be09afe21decf0233e1660d7e85/Dipesh_Pal/assets/css/custom_css_header_and_body.css" rel="stylesheet">-->
+        <link href="{% static "css/custom_css_header_and_body.css" %}" rel="stylesheet">
+        {% for comment in comments %}
+        <script>
+            function hide_reply_option_{{ comment.id }}(){
+                  var x = document.getElementsByClassName("hideDiv{{ comment.id }}")[0];
+                  if (x.style.display === "block") {
+                    x.style.display = "none";
+                  } else {
+                    x.style.display = "block";
+                  }
+                }
+        </script>
+        {% endfor %}
+        <!----- Scripts and CSS End----->
+</html>

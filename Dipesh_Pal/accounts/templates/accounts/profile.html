@@ -7,7 +7,6 @@
 {% block content %}
 <!--    {% block col %}  class="col-sm-12" {% endblock %}-->
 <div class="container" style="margin: auto">
-    <div class="row row-centered">
         <div class="col-xs-8 col-centered">
             <h1 class="glyphicon glyphicon-user"> Profile</h1>
             <hr>
@@ -19,7 +18,6 @@
             <p><b>Change Password: <a href="/accounts/change_password/">Click Here</a></b></p>
             <p style="color: #0F0F0F"><b>You can be author for our website:</b> Just fill this form <a href="/accounts/apply/">Click here</a></p>
         </div>
-    </div>
     <hr>
     {% if user.is_authenticated %}
          {% if user.is_superuser %}

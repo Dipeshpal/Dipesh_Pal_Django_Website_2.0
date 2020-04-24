@@ -6,19 +6,18 @@
 {% block active_signup %} class="active"  {% endblock %}
 
 {% block content %}
-    <div class="container" style="margin: 10%">
-        <div class="row row-centered">
-            <div class="col-xs-8 col-centered">
-                <form class="form-style" method="post">
-                    <h2>Signup</h2>
-                    <hr>
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <!--<input type="submit" value="SignUp">-->
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                </form>
-                <p>By signup you are accepting all our <a href="/disclaimer/disclaimer.html">Terms and Conditions</a></p>
-            </div>
+<!--    {% block col %}  class="col-sm-12" {% endblock %}-->
+    <div class="container">
+        <div class="col-xs-8 col-centered">
+            <form class="form-style" method="post">
+                <h2>Signup</h2>
+                <hr>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <!--<input type="submit" value="SignUp">-->
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            <p>By signup you are accepting all our <a href="/disclaimer/disclaimer.html">Terms and Conditions</a></p>
         </div>
   </div>
 {% endblock %}
