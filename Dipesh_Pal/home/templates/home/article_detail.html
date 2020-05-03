@@ -1,4 +1,4 @@
-{% extends 'base_layout_clean.html' %}
+{% extends 'base_layout_clean_article_ads.html' %}
 {% load cloudinary %}
 
 
@@ -55,7 +55,6 @@
                 <!---- Ad End ---->
 
     <br><hr><br>
-
      <!---- Create New Comment Start---->
     <h4 style="text-align: left">Comments-</h4>
     {% if user.is_authenticated %}
@@ -112,3 +111,5 @@
     <!---- Users Comments End ---->
     </div>
 {% endblock %}
+
+{% block right_sidebar %}{% endblock %}
