@@ -1,6 +1,9 @@
 {% extends 'base_layout_clean_article_ads.html' %}
 {% load cloudinary %}
 
+{% block metatitle %} "Read Article: {{ article.title }} " {% endblock %}
+{% block meta_article_tag %} " {{ article.title }} Android, PC, Tech, Blog, News, Machine Learning" {% endblock %}
+
 
 {% block content %}
 <!--    {% block col %}  class="col-sm-12" {% endblock %}-->

@@ -3,7 +3,11 @@
 <html lang="en">
     <head>
         {% block title %}<title>Dipesh Pal</title>{% endblock %}
-        <meta {% block meta %} charset="utf-8" name="dipeshpal" content="Tech Blog" content="width=device-width, initial-scale=1, shrink-to-fit=no" {% endblock meta %}>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="title" content={% block metatitle %} {% endblock %}>
+        <meta name="article:tag" content={% block meta_article_tag %} {% endblock %}>
+
 
 
         <!---- Google Analytics Start---->
