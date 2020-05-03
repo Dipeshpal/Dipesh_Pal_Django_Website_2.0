@@ -26,12 +26,6 @@ body {
 
 .container {
   border-radius: 10px;
-  /*background: #ffffff;*/
-  color: #525252;
-}
-
-.container2 {
-  border-radius: 10px;
   background: #ffffff;
   color: #525252;
 }
