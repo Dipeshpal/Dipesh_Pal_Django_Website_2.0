@@ -13,7 +13,7 @@ body {
    padding: 0%;
 }
 #body {
-   padding:10px;
+   /*padding:10px;*/
    padding-bottom:60px;   /* Height of the footer */
 }
 #footer {
@@ -267,6 +267,11 @@ body {
         border-radius: 4px;
         margin: 10px 0;
         cursor: pointer;
+    }
+
+    #body {
+        padding:10px;
+        padding-bottom:60px;   /* Height of the footer */
     }
 
 

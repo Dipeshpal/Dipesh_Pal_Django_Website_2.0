@@ -78,7 +78,6 @@
                     </li>
 
                     <li class="nav-item" {% block active_videos %}  {% endblock %}><a class="nav-link"  href="/videos/videos.html">Videos</a></li>
-                    <li class="nav-item" {% block active_about %}  {% endblock %}><a class="nav-link"  href="/about/about.html">About</a></li>
                     {% if user.is_authenticated %}
                         {% if user.is_staff %}
                             <li class="nav-item" {% block articleCreateli %} {% endblock %}><a class="nav-link" href="/create/"><span class="glyphicon glyphicon-pencil"></span> Create New Article</a></li>
@@ -89,6 +88,8 @@
                             <li class="nav-item" {% block active_login %}  {% endblock %}><a class="nav-link" href="/accounts/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                             <li class="nav-item" {% block active_signup %}  {% endblock %}><a class="nav-link" href="/accounts/signup/"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
                     {% endif %}
+                    <li class="nav-item" {% block active_about %}  {% endblock %}><a class="nav-link"  href="/about/about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link"  href="http://www.dipeshpal.in" target="_blank">About Creator</a></li>
                 </ul>
             </div>
             <!-- Collapsible content -->
@@ -99,7 +100,7 @@
     <!--- Body Start ---->
         <div id="body">
             <main>
-              <div class="container-fluid text-center" style="margin-top: 1%; position: relative; min-height: 100vh;">
+              <div class="container-fluid text-center" style="margin-top: 1%; padding-left: 1%; padding-right: 1%; position: relative; min-height: 100vh;">
                 <div class="row content">
                   <!----- Left Sidebar ----->
                   {% block left_sidebar %}
@@ -109,7 +110,7 @@
                   <!----- Left Sidebar End----->
 
                   <!----- Mid Block----->
-                  <div {% block col %}  class="mid-bar col-sm-8" {% endblock %} >
+                  <div style="padding: 2px" {% block col %}  class="mid-bar col-sm-8" {% endblock %} >
                       <!----- Pagination ----->
                       {% block content %}
                       {% block pagination %}{% endblock %}
@@ -120,19 +121,11 @@
 
                   <!----- Right Sidebar ----->
                   {% block right_sidebar %}
-                    <div class="right-sidebar col-sm-2 sidenav">
-                      <div class="container right-sidebar-container">
-                        <h5>Our Social Stats-</h5>
-                        <h6><i class="fab fa-youtube"><a style="color: #1b1e21" href="https://www.youtube.com/channel/UCGEoRAK92fUk2kY3kSJMR_Q?view_as=subscriber"> 10K+ Subscriber</a></i></h6>
-                        <h6><i class="fab fa-instagram"><a style="color: #1b1e21" href="https://www.instagram.com/dipesh_pal17/"> 500+ Followers</a></i></h6>
-                        <h6><i class="fab fa-facebook"><a style="color: #1b1e21" href="https://www.facebook.com/dipeshpal17/">  500+ Followers</a></i></h6>
-                        <h6><i class="fab fa-twitter"><a style="color: #1b1e21" href="https://twitter.com/Dipesh17pal">  100+ Followers</a></i></h6></div>
-                      </div>
 
-                    </div>
                   {% endblock %}
                   <!----- Right Sidebar End----->
                 </div>
+              </div>
             </main>
         </div>
     <!--- Body End ---->
@@ -175,7 +168,11 @@
 
             <ul class="list-unstyled list-inline text-center">
                 <li class="list-inline-item">
-                    <a href="/about/about.html" class="text-light">About</a>
+                    <a href="/about/about.html" class="text-light">About Us</a>
+                </li>
+
+                <li class="list-inline-item">
+                    <a href="dipeshpal.in" class="text-light">About Me</a>
                 </li>
 
                 <li class="list-inline-item">

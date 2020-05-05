@@ -14,13 +14,27 @@
                <li class="card-title" style="text-align: left; list-style-type:none;"><a class="article-title" href="{% url 'home:detail' slug=article.slug %}">{{ article.title }}</a></li>
             {% endif %}
         {% endfor %}
+
+    <!--- Adsterra 160*300 AD Start---->
+    <script type="text/javascript">
+        atOptions = {
+            'key' : '0003f661e4a66e5a28cad38e63f4afd4',
+            'format' : 'iframe',
+            'height' : 300,
+            'width' : 160,
+            'params' : {}
+        };
+        document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.hiprofitnetworks.com/0003f661e4a66e5a28cad38e63f4afd4/invoke.js"></scr' + 'ipt>');
+    </script>
+    <!--- Adsterra 160*300 AD End---->
+
     </div>
 {% endblock %}
 
 
 {% block content %}
 
-<div class="row">
+<div class="row" style="padding-left: 4%; padding-right: 4%">
  {% for article in articles %}
     <div class="col-sm-4" style="margin: 0px; padding: 0px">
             <div class="view overlay">
@@ -58,32 +72,35 @@
   </ul>
 </nav>
 
-{% comment %}
-    <div style="text-align: center">
-       <nav aria-label="...">
-          <ul class="pagination">
-              <li class="page-item disabled">
-                  <span class="page-link">
-                      {% if articles.has_previous %}
-                          <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
-                          <li class="page-item"><a class="page-link" href="?page={{ articles.previous_page_number }}">previous</a></li>
-                      {% endif %}
-
-                      <span class="current">
-                          <li class="page-item active"><a class="page-link">Page {{ articles.number }} of {{ articles.paginator.num_pages }}  </a></li>
-                      </span>
-
-                      {% if articles.has_next %}
-                          <li class="page-item"><a class="page-link" href="?page={{ articles.next_page_number }}">next</a></li>
-                          <li class="page-item"><a class="page-link" href="?page={{ articles.paginator.num_pages }}">last &raquo;</a></li>
-                      {% endif %}
-                  </span>
-          </ul>
-       </nav>
-    </div>
-
-{% endcomment %}
+<!--- Adsterra Native AD Start---->
+<script async="async" data-cfasync="false" src="//pl15434007.passtechusa.com/1be645f9c2c1f5a33ca0bc3ee23fb36f/invoke.js"></script>
+<div id="container-1be645f9c2c1f5a33ca0bc3ee23fb36f"></div>
+<!--- Adsterra Native AD END---->
 
 {% endblock %}
 
+{% endblock %}
+
+
+
+ {% block right_sidebar %}
+    <div class="right-sidebar col-sm-2 sidenav">
+        <div class="container right-sidebar-container">
+            <h5>Our Social Stats-</h5>
+            <h6><i class="fab fa-youtube"><a style="color: #1b1e21" href="https://www.youtube.com/channel/UCGEoRAK92fUk2kY3kSJMR_Q?view_as=subscriber"> 10K+ Subscriber</a></i></h6>
+            <h6><i class="fab fa-instagram"><a style="color: #1b1e21" href="https://www.instagram.com/dipesh_pal17/"> 500+ Followers</a></i></h6>
+            <h6><i class="fab fa-facebook"><a style="color: #1b1e21" href="https://www.facebook.com/dipeshpal17/">  500+ Followers</a></i></h6>
+            <h6><i class="fab fa-twitter"><a style="color: #1b1e21" href="https://twitter.com/Dipesh17pal">  100+ Followers</a></i></h6></div>
+        <!--- Adsterra 160*300 AD Start---->
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '0003f661e4a66e5a28cad38e63f4afd4',
+                    'format' : 'iframe',
+                    'height' : 300,
+                    'width' : 160,
+                    'params' : {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.hiprofitnetworks.com/0003f661e4a66e5a28cad38e63f4afd4/invoke.js"></scr' + 'ipt>');
+            </script>
+    </div>
 {% endblock %}
