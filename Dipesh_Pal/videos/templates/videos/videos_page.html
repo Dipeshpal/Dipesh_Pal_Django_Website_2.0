@@ -4,17 +4,36 @@
 
 {% block content %}
 <!--    {% block col %}  class="col-sm-12" {% endblock %}-->
-    <div id="youmax"></div>
+   <div class="jumbotron shadow p-3 mb-5 bg-white rounded" style="padding: 0px; margin: auto">
+    <div class="row">
+        <div class="col-sm-6" style="padding-left: 20%">
+            <img src="{{ data.details.profile_pic }}" class="img-fluid rounded-circle z-depth-2" style="width: 50%" alt="Responsive image">
+        </div>
+        <div class="col-sm-6">
+            <h2>{{ data.details.channelTitle }}</h2>
+            <h2>Subscriber: {{ data.details.subs_count }}</h2>
+            <h4 class="text-muted">Total Videos: {{ data.details.videoCount }}</h4>
+            <h4 class="text-muted">Total Views: {{ data.details.viewCount }}</h4>
+        </div>
+    </div>
+</div>
 
-     <script>
-		$('#youmax').youmax({
-			apiKey:'AIzaSyAlhAqP5RS7Gxwg_0r_rh9jOv_5WfaJgXw',
-			youTubeChannelURL:"https://www.youtube.com/channel/UCGEoRAK92fUk2kY3kSJMR_Q",
-			youTubePlaylistURL:"https://www.youtube.com/channel/UCGEoRAK92fUk2kY3kSJMR_Q/playlists",
-			youmaxDefaultTab:"UPLOADS",
-			youmaxColumns:4,
-			showVideoInLightbox:true,
-			maxResults:20,
-		});
-	 </script>
+<div class="container">
+    <div class="row row2">
+        {% for content in data.content %}
+        <div class="col-sm-3">
+            <div class="card" style="width: 100%;">
+               <a href="{{ content.video_id }}">
+                  <img class="card-img-top" src="{{ content.thumbnail }}" alt="Card image cap">
+               </a>
+               <div class="card-body">
+                <h5 class="card-title">{{ content.title }}</h5>
+                <p class="card-text">Publish Date • {{ content.pub_date }}</p>
+                <a href="{{ content.video_id }}" class="btn btn-primary btn-block">Watch Now</a>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

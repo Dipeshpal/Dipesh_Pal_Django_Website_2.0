@@ -203,6 +203,14 @@ body {
   .row.content {height:auto;}
 }
 
+.row2 {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.row2 > div[class*='col-'] {
+  display: flex;
+}
 
 @media screen and (max-width: 480px) {
     .site-form {
